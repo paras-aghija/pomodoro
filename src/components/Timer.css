@@ -1,0 +1,29 @@
+.time__display{
+    margin: 20px 0;
+}
+
+.controllers{
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.controllers button {
+    font-size: 1.1rem;
+    font-weight: 700;
+    border: 1px solid #4ebfc9;
+    background-color: transparent;
+    color:#000;
+    border-radius: 6px;
+    outline: none;
+    width: 85px;
+    height: 35px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+    margin: 15px;
+    cursor: pointer;    
+  }
