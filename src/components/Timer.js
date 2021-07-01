@@ -35,6 +35,11 @@ const Timer = () => {
         setStart(false)
     }
 
+    const incBreak = () => setBreakLength(breakLength+1)
+    const decBreak = () => breakLength!==1 && setBreakLength(breakLength-1)
+    const incSession = () => setsessionLength(sessionLength+1)
+    const decSession = () => sessionLength!==1 && setsessionLength(sessionLength-1)
+
     useEffect(() => {
         if(time===0){
             console.log("Time Ended")
@@ -50,24 +55,24 @@ const Timer = () => {
         <div className="timer">
             <div className="time__display">
                 
-                {/* <div className="settings">
+                <div className="settings">
                     <div className="settings__section">
                         <label id="break-label">Break Length</label>
                         <div className="break__settings">
-                            <button className="break__dec">-</button>
+                            <button className="break__dec" onClick={decBreak}>-</button>
                             <span className="break__length">{breakLength}</span>
-                            <button className="break__inc">+</button>
+                            <button className="break__inc" onClick={incBreak}>+</button>
                         </div>
                     </div>
                     <div className="settings__section">
-                    <label id="session-label">Break Length</label>
+                    <label id="session-label">Session Length</label>
                         <div className="session__settings">
-                            <button className="session__dec">-</button>
-                            <span className="session__length">{breakLength}</span>
-                            <button className="session__inc">+</button>
+                            <button className="session__dec" onClick={decSession}>-</button>
+                            <span className="session__length">{sessionLength}</span>
+                            <button className="session__inc" onClick={incSession}>+</button>
                         </div>
                     </div>
-                </div> */}
+                </div>
 
 
                 <Time timeLeftInSecs={time}/>

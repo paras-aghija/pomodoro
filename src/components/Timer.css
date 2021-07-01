@@ -27,3 +27,48 @@
     margin: 15px;
     cursor: pointer;    
   }
+
+  /* Settings section */
+
+  .settings{
+      margin-top:20px;
+      display: flex;
+      justify-content: space-evenly;
+  }
+
+  .settings__section{
+      text-align: center;
+  }
+
+  .settings__section  button{
+    font-size: 1.1rem;
+    font-weight: 700;
+    border: 1px solid #4ebfc9;
+    background-color: transparent;
+    color: #000;
+    border-radius: 6px;
+    outline: none;
+    width: 35px;
+    height: 35px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+    cursor: pointer;
+  }
+
+  .settings__section span {
+    width: 45px;
+    height: 45px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #272899;
+    border-radius: 50%;
+    color: #fff;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 1.1rem;
+  }
