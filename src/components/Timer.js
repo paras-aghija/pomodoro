@@ -36,21 +36,25 @@ const Timer = () => {
     }
 
     const incBreak = () => {
+        if(start){return}
         setBreakLength(breakLength+1)
         if(sessionType === STYPES[0]){return}
         setTime((breakLength+1)*60)
     }
     const decBreak = () => {
+        if(start){return}
         breakLength!==1 && setBreakLength(breakLength-1)
         if(sessionType === STYPES[0]){return}
         setTime((breakLength-1)*60)
     }
     const incSession = () => {
+        if(start){return}
         setsessionLength(sessionLength+1)
         if(sessionType === STYPES[1]){return}
         setTime((sessionLength+1)*60)
     }
     const decSession = () => {
+        if(start){return}
         sessionLength!==1 && setsessionLength(sessionLength-1)
         if(sessionType === STYPES[1]){return}
         setTime((sessionLength-1)*60)
