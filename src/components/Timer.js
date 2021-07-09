@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Time from './Time'
 import './Timer.css'
 
-const STYPES = ["pomodoro", "break", "lbreak"]
+const STYPES = ["pomodoro", "break"]
 
 const Timer = () => {
     const [time,setTime] = useState(25*60)
@@ -60,7 +60,16 @@ const Timer = () => {
                         <label id="break-label">Break Length</label>
                         <div className="break__settings">
                             <button className="break__dec" onClick={decBreak}>-</button>
-                            <span className="break__length">{breakLength}</span>
+                            <span 
+                                className={sessionType===STYPES[0] ? "break__length black" : "break__length blue" }
+                                onClick={() => {
+                                    if(start){return}
+                                    setSessionType(STYPES[1])
+                                    setTime(breakLength*60)
+                                }}
+                            >
+                                {breakLength}
+                            </span>
                             <button className="break__inc" onClick={incBreak}>+</button>
                         </div>
                     </div>
@@ -68,7 +77,16 @@ const Timer = () => {
                     <label id="session-label">Session Length</label>
                         <div className="session__settings">
                             <button className="session__dec" onClick={decSession}>-</button>
-                            <span className="session__length">{sessionLength}</span>
+                            <span
+                                className={sessionType===STYPES[0] ? "break__length blue" : "break__length black" }
+                                onClick={() => {
+                                    if(start){return}
+                                    setSessionType(STYPES[0])
+                                    setTime(sessionLength*60)
+                                }}
+                            >
+                                {sessionLength}
+                            </span>
                             <button className="session__inc" onClick={incSession}>+</button>
                         </div>
                     </div>

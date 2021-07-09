@@ -31,7 +31,7 @@
   /* Settings section */
 
   .settings{
-      margin-top:20px;
+      /* margin-top:20px; */
       display: flex;
       justify-content: space-evenly;
   }
@@ -65,10 +65,19 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: #272899;
+    /* background-color: #272899; */
     border-radius: 50%;
     color: #fff;
     margin-left: 10px;
     margin-right: 10px;
     font-size: 1.1rem;
+    cursor: pointer;
+  }
+
+  .black{
+    background-color: black;
+  }
+
+  .blue{
+    background-color: #272899;
   }
