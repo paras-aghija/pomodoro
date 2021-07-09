@@ -35,10 +35,26 @@ const Timer = () => {
         setStart(false)
     }
 
-    const incBreak = () => setBreakLength(breakLength+1)
-    const decBreak = () => breakLength!==1 && setBreakLength(breakLength-1)
-    const incSession = () => setsessionLength(sessionLength+1)
-    const decSession = () => sessionLength!==1 && setsessionLength(sessionLength-1)
+    const incBreak = () => {
+        setBreakLength(breakLength+1)
+        if(sessionType === STYPES[0]){return}
+        setTime((breakLength+1)*60)
+    }
+    const decBreak = () => {
+        breakLength!==1 && setBreakLength(breakLength-1)
+        if(sessionType === STYPES[0]){return}
+        setTime((breakLength-1)*60)
+    }
+    const incSession = () => {
+        setsessionLength(sessionLength+1)
+        if(sessionType === STYPES[1]){return}
+        setTime((sessionLength+1)*60)
+    }
+    const decSession = () => {
+        sessionLength!==1 && setsessionLength(sessionLength-1)
+        if(sessionType === STYPES[1]){return}
+        setTime((sessionLength-1)*60)
+    }
 
     useEffect(() => {
         if(time===0){
