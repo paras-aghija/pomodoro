@@ -3,6 +3,7 @@ import './Table.css'
 
 const Table = () => {
     const data = JSON.parse(localStorage.getItem('data'))
+    if(data==null){return <></>}
     return (
         <div className="table">
             <h2>{data.date}</h2>
