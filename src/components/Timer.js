@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from 'react'
+import Table from './Table'
 import Time from './Time'
 import './Timer.css'
 
 const STYPES = ["pomodoro", "break"]
+const today = new Date().toISOString().slice(0,10)
 
 const Timer = () => {
+
     const [time,setTime] = useState(25*60)
     const [sessionLength, setsessionLength] = useState(25);
     const [breakLength, setBreakLength] = useState(5);
     const [start, setStart] = useState(false)
     const [sessionType, setSessionType] = useState(STYPES[0])
-    // const [inTime, setInTime] = useState(null)
-    // const [outTime, setOutTime] = useState(null)
-
+    
+    const [inTime, setInTime] = useState(null)
     const startSession = () => {
         if(start === true){
             console.log("No change")
@@ -24,7 +26,26 @@ const Timer = () => {
         else{
             setTime(breakLength*60)
         }
+        setInTime(new Date().toLocaleTimeString())
         setStart(true)
+    }
+    const addTimestamp = () => {
+        var loadedData = JSON.parse(localStorage.getItem('data'))
+        console.log(loadedData)
+        if(loadedData == null || loadedData.date !== today) {
+            loadedData = {
+                date: today,
+                timestamps: []
+            }
+        }
+        const timestamp = {
+            stype: sessionType,
+            in: inTime,
+            out: new Date().toLocaleTimeString()
+        }
+        loadedData = {...loadedData, timestamps: [...loadedData.timestamps, timestamp]}
+        console.log(loadedData)
+        localStorage.setItem('data', JSON.stringify(loadedData))
     }
 
     const endSession = () => {
@@ -34,6 +55,9 @@ const Timer = () => {
         }
         setStart(false)
     }
+
+    
+
 
     const incBreak = () => {
         if(start){return}
@@ -119,11 +143,16 @@ const Timer = () => {
                     <button className="start__timer" onClick={startSession}>
                         START
                     </button>
-                    <button className="end__timer" onClick={endSession}>
+                    <button className="end__timer" onClick={() => {
+                        addTimestamp()
+                        endSession()
+                    }}>
                         END
                     </button>
                 </div>
             </div>
+
+            <Table/>
         </div>
     )
 }
