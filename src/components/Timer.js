@@ -53,6 +53,7 @@ const Timer = () => {
             console.log("No change")
             return;
         }
+        addTimestamp()
         setStart(false)
     }
 
@@ -87,6 +88,7 @@ const Timer = () => {
     useEffect(() => {
         if(time===0){
             console.log("Time Ended")
+            endSession()
             return;
         }
         start && time>0 && setTimeout(() => setTime(time-1), 1000)
@@ -143,10 +145,7 @@ const Timer = () => {
                     <button className="start__timer" onClick={startSession}>
                         START
                     </button>
-                    <button className="end__timer" onClick={() => {
-                        addTimestamp()
-                        endSession()
-                    }}>
+                    <button className="end__timer" onClick={endSession}>
                         END
                     </button>
                 </div>
