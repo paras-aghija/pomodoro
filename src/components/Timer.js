@@ -89,11 +89,12 @@ const Timer = () => {
         if(time===0){
             console.log("Time Ended")
             endSession()
+            console.log(start)
             return;
         }
         start && time>0 && setTimeout(() => setTime(time-1), 1000)
         return () => clearTimeout()
-    }, [time,start])
+    }, [time,start, endSession])
 
     
 
